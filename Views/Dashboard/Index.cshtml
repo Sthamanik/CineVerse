@@ -1,0 +1,78 @@
+@model Cineverse.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="mb-5">
+    <h1 class="display-4 fw-bold cine-title">Dashboard</h1>
+    <p class="text-secondary lead">Overview of your cinematic universe statistics.</p>
+</div>
+
+<div class="row g-4">
+    <!-- Top Flops -->
+    <div class="col-md-6">
+        <div class="card cine-card h-100 border-0 stat-card bg-danger-subtle">
+            <div class="card-header border-0 pb-0">
+                <h3 class="mb-0 fw-bold"><i class="bi bi-graph-down-arrow"></i> Top 10 Flops</h3>
+                <small class="text-danger opacity-75">Biggest financial losses (Budget - Gross)</small>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-borderless align-middle">
+                        <thead>
+                            <tr class="text-secondary text-uppercase small border-bottom border-danger opacity-25">
+                                <th class="pb-2">Title</th>
+                                <th class="text-end pb-2">Loss</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var movie in Model.TopFlopMovies)
+                            {
+                                var loss = movie.Budget - movie.Gross;
+                                <tr>
+                                    <td class="fw-medium text-danger-emphasis py-2">@movie.Title</td>
+                                    <td class="text-end text-danger fw-bold py-2">-@loss.ToString("C0")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highest Paid Actors -->
+    <div class="col-md-6">
+         <div class="card cine-card h-100 border-0 stat-card bg-success-subtle">
+            <div class="card-header border-0 pb-0">
+                <h3 class="mb-0 fw-bold"><i class="bi bi-cash-stack"></i> Top Earners</h3>
+                <small class="text-success opacity-75">Highest paid roles per movie</small>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-borderless align-middle">
+                        <thead>
+                            <tr class="text-secondary text-uppercase small border-bottom border-success opacity-25">
+                                <th class="pb-2">Actor (Role)</th>
+                                <th class="text-end pb-2">Pay</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var role in Model.TopPaidActors)
+                            {
+                                <tr>
+                                    <td class="fw-medium text-success-emphasis py-2">
+                                        @role.ActorName <br />
+                                        <small class="text-muted fw-normal">as @role.CharacterName</small>
+                                    </td>
+                                    <td class="text-end text-success fw-bold py-2">@role.Pay.ToString("C0")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

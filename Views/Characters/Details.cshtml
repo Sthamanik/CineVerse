@@ -1,0 +1,59 @@
+@model Cineverse.Models.Character
+
+@{
+    ViewData["Title"] = "Role Details";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card cine-card shadow-sm border-0">
+                <div class="card-header bg-transparent border-bottom text-center py-4">
+                    <h5 class="text-secondary text-uppercase mb-2 fw-bold">Character Profile</h5>
+                    <h1 class="display-3 fw-bold cine-title">@Model.CharacterName</h1>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row mb-5">
+                        <div class="col-md-6 text-center border-end">
+                            <small class="text-secondary text-uppercase fw-bold">Played By</small>
+                            <h3 class="mt-2 text-dark">
+                                <a asp-controller="Actors" asp-action="Details" asp-route-id="@Model.ActorId" class="text-decoration-none text-dark hover-primary">
+                                    <i class="bi bi-person-fill text-muted"></i> @Model.Actor?.Name
+                                </a>
+                            </h3>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <small class="text-secondary text-uppercase fw-bold">Featured In</small>
+                            <h3 class="mt-2 text-dark">
+                                <a asp-controller="Movies" asp-action="Details" asp-route-id="@Model.MovieId" class="text-decoration-none text-dark hover-primary">
+                                    <i class="bi bi-film text-muted"></i> @Model.Movie?.Title
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    
+                    <div class="row text-center">
+                       <div class="col-6">
+                            <div class="p-3 bg-light rounded border">
+                                <h4 class="text-success mb-0 fw-bold">@Model.Pay.ToString("C0")</h4>
+                                <small class="text-secondary text-uppercase">Salary</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 bg-light rounded border">
+                                <h4 class="text-dark mb-0 fw-bold">@Model.Screentime</h4>
+                                <small class="text-secondary text-uppercase">Screen Time</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-top p-3 text-center">
+                     <div class="d-flex justify-content-center gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary px-4">Edit Role</a>
+                        <a asp-action="Index" class="btn btn-outline-secondary px-4">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+@model IEnumerable<Cineverse.Models.Actor>
+
+@{
+    ViewData["Title"] = "Improvisers";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="cine-title display-5">Actors</h1>
+        <p class="text-secondary">The faces of the stories.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary btn-lg shadow-sm">
+        <i class="bi bi-person-plus-fill"></i> Add New Actor
+    </a>
+</div>
+
+<div class="card cine-card shadow-sm border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0 align-middle">
+                <thead class="bg-light text-secondary text-uppercase small tracking-wider">
+                    <tr>
+                        <th class="ps-4 py-3">Name</th>
+                        <th>Birth Date</th>
+                        <th>Origin</th>
+                        <th>Height</th>
+                        <th class="text-end">Net Worth</th>
+                        <th class="text-end pe-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model) {
+                        <tr>
+                            <td class="ps-4 fw-bold text-dark">@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td class="text-secondary">@Html.DisplayFor(modelItem => item.DateOfBirth)</td>
+                            <td class="text-secondary">
+                                @if(!string.IsNullOrEmpty(item.BirthCity))
+                                {
+                                    <span>@item.BirthCity, @item.BirthCountry</span>
+                                }
+                            </td>
+                            <td class="text-secondary">@Html.DisplayFor(modelItem => item.Height)"</td>
+                            <td class="text-end text-success fw-semibold">@Html.DisplayFor(modelItem => item.NetWorth)</td>
+                            <td class="text-end pe-4">
+                                <div class="btn-group btn-group-sm">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil"></i></a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary" title="Details"><i class="bi bi-info-circle"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

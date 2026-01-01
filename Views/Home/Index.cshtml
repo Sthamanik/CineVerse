@@ -1,0 +1,142 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+<div class="hero-section text-center py-5 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="hero-icon mb-4">
+                    <i class="bi bi-film display-1 text-primary" style="font-size: 5rem; color: #8d74cd !important;"></i>
+                </div>
+                <h1 class="display-3 fw-bold mb-3" style="background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Welcome to Cineverse
+                </h1>
+                <p class="lead text-secondary mb-4" style="font-size: 1.25rem;">
+                    Your comprehensive movie management system. Track films, actors, characters, and analyze box office performance all in one place.
+                </p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <a asp-controller="Movies" asp-action="Index" class="btn btn-primary btn-lg px-5 py-3">
+                        <i class="bi bi-collection-play me-2"></i>Browse Movies
+                    </a>
+                    <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary btn-lg px-5 py-3">
+                        <i class="bi bi-graph-up me-2"></i>View Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container mb-5">
+    <div class="row g-4">
+        <!-- Movies Feature -->
+        <div class="col-md-4">
+            <div class="feature-card cine-card h-100 p-4 text-center">
+                <div class="feature-icon mb-3">
+                    <i class="bi bi-film display-4" style="color: #8d74cd;"></i>
+                </div>
+                <h3 class="h4 fw-bold mb-3">Movie Library</h3>
+                <p class="text-secondary mb-4">
+                    Manage your complete collection of films with detailed information including budgets, box office gross, ratings, and release dates.
+                </p>
+                <a asp-controller="Movies" asp-action="Index" class="btn btn-outline-secondary">
+                    Explore Movies <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Actors Feature -->
+        <div class="col-md-4">
+            <div class="feature-card cine-card h-100 p-4 text-center">
+                <div class="feature-icon mb-3">
+                    <i class="bi bi-people-fill display-4" style="color: #8d74cd;"></i>
+                </div>
+                <h3 class="h4 fw-bold mb-3">Actor Profiles</h3>
+                <p class="text-secondary mb-4">
+                    Browse comprehensive actor profiles with biographies, birth details, physical stats, and net worth information.
+                </p>
+                <a asp-controller="Actors" asp-action="Index" class="btn btn-outline-secondary">
+                    View Actors <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Analytics Feature -->
+        <div class="col-md-4">
+            <div class="feature-card cine-card h-100 p-4 text-center">
+                <div class="feature-icon mb-3">
+                    <i class="bi bi-graph-up-arrow display-4" style="color: #8d74cd;"></i>
+                </div>
+                <h3 class="h4 fw-bold mb-3">Analytics Dashboard</h3>
+                <p class="text-secondary mb-4">
+                    Track box office performance, identify top earners, analyze financial flops, and gain insights into your movie database.
+                </p>
+                <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">
+                    View Analytics <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Section -->
+<div class="container mb-5">
+    <div class="row g-4 text-center">
+        <div class="col-md-3">
+            <div class="stat-box p-4">
+                <h2 class="display-4 fw-bold mb-2" style="color: #8d74cd;">20+</h2>
+                <p class="text-secondary text-uppercase small fw-bold mb-0">Movies</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-box p-4">
+                <h2 class="display-4 fw-bold mb-2" style="color: #8d74cd;">20+</h2>
+                <p class="text-secondary text-uppercase small fw-bold mb-0">Actors</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-box p-4">
+                <h2 class="display-4 fw-bold mb-2" style="color: #8d74cd;">21</h2>
+                <p class="text-secondary text-uppercase small fw-bold mb-0">Characters</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-box p-4">
+                <h2 class="display-4 fw-bold mb-2" style="color: #8d74cd;">$B+</h2>
+                <p class="text-secondary text-uppercase small fw-bold mb-0">Box Office</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.hero-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    margin-top: -20px;
+}
+
+.feature-card {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.feature-card:hover {
+    border-color: #8d74cd;
+    transform: translateY(-5px);
+}
+
+.stat-box {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: scale(1.05);
+}
+</style>

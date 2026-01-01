@@ -1,0 +1,91 @@
+@model Cineverse.Models.Actor
+
+@{
+    ViewData["Title"] = "Add Actor";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        <div class="card cine-card shadow-sm border-0">
+            <div class="card-header bg-transparent border-bottom py-3">
+                <h2 class="mb-0 text-dark"><i class="bi bi-person-badge"></i> Add New Actor</h2>
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-8">
+                            <label asp-for="Name" class="form-label text-secondary small text-uppercase fw-bold"></label>
+                            <input asp-for="Name" class="form-control form-control-lg" placeholder="Enter actor name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Gender" class="form-label text-secondary small text-uppercase fw-bold"></label>
+                            <select asp-for="Gender" class="form-select form-select-lg">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Non-Binary">Non-Binary</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label asp-for="DateOfBirth" class="form-label text-secondary small text-uppercase fw-bold"></label>
+                            <input asp-for="DateOfBirth" class="form-control" />
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="BirthCity" class="form-label text-secondary small text-uppercase fw-bold"></label>
+                            <input asp-for="BirthCity" class="form-control" />
+                            <span asp-validation-for="BirthCity" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="BirthCountry" class="form-label text-secondary small text-uppercase fw-bold"></label>
+                            <input asp-for="BirthCountry" class="form-control" />
+                            <span asp-validation-for="BirthCountry" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label asp-for="Height" class="form-label text-secondary small text-uppercase fw-bold"></label>
+                             <div class="input-group">
+                                <input asp-for="Height" class="form-control" />
+                                <span class="input-group-text bg-light text-secondary">inches</span>
+                            </div>
+                            <span asp-validation-for="Height" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-8">
+                            <label asp-for="NetWorth" class="form-label text-secondary small text-uppercase fw-bold"></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-secondary">$</span>
+                                <input asp-for="NetWorth" class="form-control" />
+                            </div>
+                            <span asp-validation-for="NetWorth" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Biography" class="form-label text-secondary small text-uppercase fw-bold"></label>
+                        <textarea asp-for="Biography" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Biography" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a asp-action="Index" class="text-secondary text-decoration-none"><i class="bi bi-arrow-left"></i> Back to List</a>
+                        <button type="submit" class="btn btn-primary btn-lg px-5">Add Actor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
